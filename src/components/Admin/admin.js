@@ -1,24 +1,18 @@
 import React from "react";
-import Nav from 'react-bootstrap/Nav'
+import {Tab, Tabs} from 'react-bootstrap'
+import {FormJob} from '../../shared/Forms/FormJob';
 
 export const Admin = () =>{
     
     return(
-        <Nav justify variant="tabs" defaultActiveKey="/home">
-            <Nav.Item>
-                <Nav.Link href="/home">Active</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link eventKey="link-1">Loooonger NavLink</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link eventKey="link-2">Link</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link eventKey="disabled" disabled>
-                Disabled
-                </Nav.Link>
-            </Nav.Item>
-        </Nav>
+        <Tabs
+            id="controlled-tab-example"
+        >    <Tab eventKey="home" title="Servicios">
+                <FormJob/>
+            </Tab>
+            <Tab eventKey="profile" title="Usuarios">
+                Profile content
+            </Tab>
+        </Tabs> 
     )
 }

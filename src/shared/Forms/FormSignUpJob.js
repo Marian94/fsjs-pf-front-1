@@ -1,10 +1,11 @@
 import React from 'react';
 import {Form, Alert} from 'react-bootstrap';
-
 import {useFormik } from "formik";
 import * as Yup from 'yup';
 import {CustomButton} from '../Button/button';
 import {Checkbox} from '../CheckBox/checkbox';
+import axios from 'axios';
+import multer from 'multer';
 
 export const FormSignUp = ({job}) => {
     const FILE_SIZE = 160 * 1024 * 1024;
@@ -25,73 +26,87 @@ export const FormSignUp = ({job}) => {
         description: '',
         file: undefined,
     },
-    validationSchema: Yup.object({
-        firstName: Yup.string()
-            .min(2, 'Name must be more than 2 characters')
-            .max(15, 'Name must be 15 characters or less')
-            .required('Name is required'),
-        lastName: Yup.string()
-            .min(2, 'Last Name must be more than 2 characters')
-            .max(20, 'Last Name must be 20 characters or less')
-            .required('Last Name is required'),
-        email: Yup.string()
-            .email('Invalid email address')
-            .required('Email is required'),
-        celular: Yup.string()
-            .required('Celular is required')
-            .matches(/^[0-9]+$/, 'Must be only digits')
-            .min(10, 'Must be exactly 10 digits')
-            .max(10, 'Must be exactly 10 digits'),
-        telefono: Yup.string()
-            .matches(/^[0-9]+$/, 'Must be only digits')
-            .min(10, 'Must be exactly 10 digits')
-            .max(10, 'Must be exactly 10 digits'),
-        description: Yup.array()
-            .max(120, 'Must be exactly 120 characters'),  
-        checkboxGroup: Yup.string()
-            .required(),  
-        address1: Yup.string()
-            .min(5, 'Address must be more than 5 characters')
-            .max(50, 'Must be 50 characters or less')
-            .required('Address is required'),  
-        colonia: Yup.string()
-            .min(5, 'Address must be more than 5 characters')
-            .max(50, 'Must be 50 characters or less')
-            .required('Colonia is required'),  
-        municipio: Yup.string()
-            .required('Municipio is required!'),
-        postalCode: Yup.string()
-            .required('CP is required')
-            .matches(/^[0-9]+$/, 'Must be only digits')
-            .min(5, 'Must be exactly 5 digits')
-            .max(5, 'Must be exactly 5 digits'),
-        password: Yup.string()
-            .required('Ingrese una contraseña')
-            .matches(
-                /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                'Debe de tene minimo 8 caracters y un numero'
-            ),
-        changepassword: Yup.string()
-            .required('Confirme la contraseña')
-            .when('password', {
-                is: val => (val && val.length > 0 ? true : false),
-                then: Yup.string().oneOf(
-                [Yup.ref('password')],
-                'Las contraseñas deben de ser iguales'
-                )
-            }),
-        file: Yup.mixed()
-            .required("A file is required")
-            .test(
-              "fileSize",
-              "File too large",
-              value => value && value.size <= FILE_SIZE
-            )
+    // validationSchema: Yup.object({
+    //     firstName: Yup.string()
+    //         .min(2, 'Name must be more than 2 characters')
+    //         .max(15, 'Name must be 15 characters or less')
+    //         .required('Name is required'),
+    //     lastName: Yup.string()
+    //         .min(2, 'Last Name must be more than 2 characters')
+    //         .max(20, 'Last Name must be 20 characters or less')
+    //         .required('Last Name is required'),
+    //     email: Yup.string()
+    //         .email('Invalid email address')
+    //         .required('Email is required'),
+    //     celular: Yup.string()
+    //         .required('Celular is required')
+    //         .matches(/^[0-9]+$/, 'Must be only digits')
+    //         .min(10, 'Must be exactly 10 digits')
+    //         .max(10, 'Must be exactly 10 digits'),
+    //     telefono: Yup.string()
+    //         .matches(/^[0-9]+$/, 'Must be only digits')
+    //         .min(10, 'Must be exactly 10 digits')
+    //         .max(10, 'Must be exactly 10 digits'),
+    //     description: Yup.array()
+    //         .max(120, 'Must be exactly 120 characters'),  
+    //     checkboxGroup: Yup.string()
+    //         .required(),  
+    //     address1: Yup.string()
+    //         .min(5, 'Address must be more than 5 characters')
+    //         .max(50, 'Must be 50 characters or less')
+    //         .required('Address is required'),  
+    //     colonia: Yup.string()
+    //         .min(5, 'Address must be more than 5 characters')
+    //         .max(50, 'Must be 50 characters or less')
+    //         .required('Colonia is required'),  
+    //     municipio: Yup.string()
+    //         .required('Municipio is required!'),
+    //     postalCode: Yup.string()
+    //         .required('CP is required')
+    //         .matches(/^[0-9]+$/, 'Must be only digits')
+    //         .min(5, 'Must be exactly 5 digits')
+    //         .max(5, 'Must be exactly 5 digits'),
+    //     password: Yup.string()
+    //         .required('Ingrese una contraseña')
+    //         .matches(
+    //             /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+    //             'Debe de tene minimo 8 caracters y un numero'
+    //         ),
+    //     changepassword: Yup.string()
+    //         .required('Confirme la contraseña')
+    //         .when('password', {
+    //             is: val => (val && val.length > 0 ? true : false),
+    //             then: Yup.string().oneOf(
+    //             [Yup.ref('password')],
+    //             'Las contraseñas deben de ser iguales'
+    //             )
+    //         }),
+    //     file: Yup.mixed()
+    //         .required("A file is required")
+    //         .test(
+    //           "fileSize",
+    //           "File too large",
+    //           value => value && value.size <= FILE_SIZE
+    //         )
         
-    }),
+    // }),
     onSubmit: values => {
-        console.log("hola");
-        //alert(JSON.stringify(values, null, 2));
+        const ruta = encodeURI('/signUp');
+        const reqconfig= {
+            "baseURL" : "http://localhost:8000",
+            "headers":{
+                "content-type":"application/json"
+            }
+        };
+        values.admin = false;
+        values.active = true;
+        console.log(values.file);
+        axios.post(ruta, values, reqconfig).then((res) => {
+            console.log(res);    
+        })
+        .catch(err => {
+            console.error(err);
+        });
       },
     });
   return (
@@ -253,7 +268,7 @@ export const FormSignUp = ({job}) => {
                     <>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label for="colonia">Colonia</label>
+                            <label htmlFor="colonia">Colonia</label>
                             <input
                             className="form-control"
                             id="colonia"
@@ -265,7 +280,7 @@ export const FormSignUp = ({job}) => {
                             />
                         </div>
                         <div className="form-group col-md-4">
-                            <label for="inputState">Municipio</label>  
+                            <label htmlFor="inputState">Municipio</label>  
                             <select
                                 name="municipio"
                                 value={formik.values.municipio}
@@ -281,7 +296,7 @@ export const FormSignUp = ({job}) => {
                             </select>
                         </div>
                         <div className="form-group col-md-2">
-                            <label for="postalCode">C.P</label>
+                            <label htmlFor="postalCode">C.P</label>
                             <input
                                 className="form-control"
                                 id="postalCode"
@@ -354,11 +369,11 @@ export const FormSignUp = ({job}) => {
                         ) : null}
                     </Form.Group>
                     <Form.Group>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Descripcion del servicio</span>
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Descripcion del servicio</span>
                             </div>
-                            <textarea class="form-control" id="description" name="description" aria-label="With textarea"></textarea>
+                            <textarea className="form-control" id="description" name="description" aria-label="With textarea"></textarea>
                         </div>
                         {formik.touched.description && formik.errors.description ? (
                         <Alert variant='danger'>
