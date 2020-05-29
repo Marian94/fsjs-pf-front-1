@@ -1,21 +1,23 @@
 .grid-container {
     display: grid;
     grid-template-areas: 'myArea myArea';
-    background-color: #2196F3;
+    background-color: #E6E6FA;
     padding: auto;
     justify-items: center;
 }
 .grid-item-header {
     grid-area: myArea;
   }
-  
-  
-  .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 51px 63px;
-    font-size: 34px;
+  .grid-item-header-2 {
+    justify-items: center;
   }
+  
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 51px 63px;
+  font-size: 34px;
+}
 
 @media only screen and (max-width: 600px) {
     .grid-container {

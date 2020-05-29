@@ -1,6 +1,7 @@
 import React from "react";
 import {Tab, Tabs} from 'react-bootstrap'
 import {FormJob} from '../../shared/Forms/FormJob';
+import {Catalogo} from '../Catalogo/catalogo'
 
 export const Admin = () =>{
     
@@ -11,7 +12,7 @@ export const Admin = () =>{
                 <FormJob/>
             </Tab>
             <Tab eventKey="profile" title="Usuarios">
-                Profile content
+                <Catalogo admin={true} />
             </Tab>
         </Tabs> 
     )

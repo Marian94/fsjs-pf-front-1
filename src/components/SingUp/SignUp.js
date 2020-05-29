@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {FormSignUp} from '../../shared/Forms/FormSignUpJob';
 export const SignUp = () =>{
     return(

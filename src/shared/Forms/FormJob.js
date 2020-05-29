@@ -17,7 +17,6 @@ export const FormJob = () => {
     }),
     onSubmit: values => {
         const filterList =list.filter(x => values.serviceDelete.indexOf(x) === -1);
-        setList(filterList);
         const ruta = encodeURI('/services');
         const reqconfig= {
             "baseURL" : "http://localhost:8000",
@@ -25,25 +24,26 @@ export const FormJob = () => {
                 "content-type":"application/json"
             }
         };
-        axios.post(ruta, filterList, reqconfig).then((res) => {
-            console.log(res);    
-        })
-        .catch(err => {
-            console.error(err);
+        axios.patch(ruta, filterList, reqconfig).then((res) => {
+            alert("Elementos Eliminados!")
+            setList(res.data.result.updated.services);
+            console.log(res.data.result)
+            
+            
+        }).catch(err => {
+            console.log("CATCH = ", err.response);
+
         });
       },
     });
     useEffect(() => {
-        const ruta = encodeURI("/services")
         axios.get("http://localhost:8000/services").then( res =>{
-            console.log(res)
-
+            setList(res.data.result)
         }).catch(e =>{ console.error(e)})
 
     }, []);
-    const initialList = [];
     const [service, setService] = useState('');
-    const [list, setList] = useState(initialList);
+    const [list, setList] = useState([]);
 
     const handleChangeService = event => {
         setService(event.target.value);
@@ -56,25 +56,22 @@ export const FormJob = () => {
         event.preventDefault();
     };
     const saveList = event => {
-        const body={};
-        if(list.length > 0){
-            const ruta = encodeURI('/services');
-            body.services = list;
-            axios({
-                url: ruta,
-                baseURL: "http://localhost:8000",
-                headers:{
-                    "content-type":"application/json"
-                },
-                method: true ? "POST" : "PATCH",
-                data: body
-            }).then((res) => {
-                console.log(res);    
-            })
-            .catch(err => {
-                console.error(err);
-            });
-        }
+        const ruta = encodeURI('/services');
+        const reqconfig= {
+            "baseURL" : "http://localhost:8000",
+            "headers":{
+                "content-type":"application/json"
+            }
+        };
+        axios.patch(ruta, list, reqconfig).then((res) => {
+            alert("Lista actualizada!")
+            setList(res.data.result.updated.services);
+            console.log(res.data.result);
+            
+        }).catch(err => {
+            console.log("CATCH = ", err.response);
+
+        });
     };
     return (
         <div className="grid-container">

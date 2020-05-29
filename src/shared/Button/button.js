@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from 'react-bootstrap';
 
-export const CustomButton = ({name, id, variant, label, onClickHandler, type, href, className}) => {
+export const CustomButton = ({name, id, variant, label, onClickHandler, type, href, className, disabled}) => {
     return(
         <>
             <Button
@@ -12,6 +12,7 @@ export const CustomButton = ({name, id, variant, label, onClickHandler, type, hr
                 href={href}
                 variant={variant}
                 onClick={onClickHandler}
+                disabled={disabled}
             >
                 {label}
             </Button>

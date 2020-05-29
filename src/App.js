@@ -10,6 +10,7 @@ import {CustomNavbar} from "./components/Navbar/navbar";
 import {Footer} from "./components/Footer/Footer";
 import {ForgotPassword} from "./components/Password/password";
 import {SignUpJob} from "./components/SingUp/SignUpJob";
+import {Profile} from "./components/Profile/Profile";
 import {SignUp} from "./components/SingUp/SignUp";
 import {UserContext} from "./context/userContext"
 
@@ -28,6 +29,7 @@ export default function App(){
                     <Route path="/forgotPassword" exact component={ForgotPassword}></Route>
                     <Route path="/signUp" exact component={SignUp}></Route>
                     <Route path="/signUpJob" exact component={SignUpJob}></Route>
+                    <Route path="/profile" exact component={Profile}></Route>
                     <Route component={Error}></Route>
                 </Switch>
             </UserContext.Provider>

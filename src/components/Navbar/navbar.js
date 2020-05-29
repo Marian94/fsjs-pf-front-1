@@ -16,13 +16,13 @@ export const CustomNavbar = () =>{
     const {user, setUser} = useContext(UserContext);
     
     return(
-        <Navbar collapseOnSelect expand="lg" bg="light" sticky="top">
+        <Navbar collapseOnSelect expand="lg" sticky="top" style={{background: "#FFFAFA"}}>
             <Navbar.Brand>
                 <Img alt="App Tool" src={Tools} width="50" height="50" className="d-inline-block align-top"/>
                 {' '}
                 {user ?
                     
-                    (<b>App Tool Bienvenid@ {user.name}</b>):(<b>AppTool</b>)
+                    (<b>App Tool Bienvenid@ {user.firstName}</b>):(<b>AppTool</b>)
                 }
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -30,7 +30,7 @@ export const CustomNavbar = () =>{
                 <Nav>
                     <Nav.Link>
                         <Link to="/"> 
-                                Home <br/>
+                                Inicio <br/>
                                 <Img alt="Home" src={Home} width="30" height="30" className="d-inline-block align-top"/>
                         </Link>
                     </Nav.Link>
@@ -52,7 +52,7 @@ export const CustomNavbar = () =>{
                                 </Nav.Link>
                             )}
                                 <Nav.Link>
-                                    <Link to="/">
+                                    <Link to="/profile">
                                         Profile <br/>
                                         <Img alt="Account" src={Profile} width="30" height="40" className="d-inline-block align-top"/>
                                     </Link>
@@ -68,7 +68,7 @@ export const CustomNavbar = () =>{
                         ( 
                             <Nav.Link>
                                 <Link to="/login">
-                                    Log In <br/>
+                                    Log In<br/>
                                     <Img alt="Log In" src={LogIn} width="30" height="30" className="d-inline-block align-top"/>
                                 </Link>
                             </Nav.Link>
