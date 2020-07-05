@@ -3,8 +3,31 @@ import {Card, Modal} from 'react-bootstrap';
 import {CustomButton} from '../Button/button';
 import "./Cards.css";
 
-export const CustomCard = ({id, catalogo, name, admin, nombrePersona, useOverlay, telefono, pago, descripcionPersona, otrosServicios,servicios, foto, button, horario, variant, labelButton, onClickHandler, email, user, overlay, domicilio}) =>{
+export const CustomCard = ({
+    id,
+    catalogo,
+    name, 
+    admin,
+    nombrePersona,
+    useOverlay,
+    telefono,
+    pago,
+    descripcionPersona,
+    otrosServicios,
+    servicios,
+    foto,
+    button,
+    horario,
+    variant,
+    labelButton,
+    onClickHandler,
+    email,
+    user,
+    overlay,
+    domicilio
+}) =>{
     let disabled = false;
+    console.log(nombrePersona)
     if(user){
         disabled = (id ===user._id)? true : false;
     }
@@ -55,7 +78,7 @@ export const CustomCard = ({id, catalogo, name, admin, nombrePersona, useOverlay
             {useOverlay && (
                 <Modal show={overlay} onHide={onClickHandler}>
                     <Modal.Header closeButton>
-                    <   Modal.Title>{nombrePersona}</Modal.Title>
+                    <Modal.Title>{nombrePersona}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <p className="custom-p">Telefono:</p>

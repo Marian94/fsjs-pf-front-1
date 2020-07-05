@@ -51,7 +51,7 @@ export const Catalogo = ({admin}) =>{
         });
     }
     const [overlay, setOverlay] = useState(false);
-    const handleShow = () => setOverlay(!overlay);
+    const handleShow = () => setOverlay(overlay => !overlay);
     return(
         <div className="grid-container">
             {admin ? (
@@ -103,7 +103,7 @@ export const Catalogo = ({admin}) =>{
                     </>
                     {listOfPeople ? (
                         <>
-                        {listOfPeople.map(item => (
+                        {listOfPeople.map((item, idx) => (
                             <div className="grid-item">
                                 <CustomCard 
                                     catalogo={true}
