@@ -18,17 +18,9 @@ phases:
       - terraform plan -out= . 
       - terraform apply -state=.  -auto-approve 
       - cd ..
- # build: 
- #   commands: 
-    #  - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 389683505237.dkr.ecr.us-east-1.amazonaws.com
-      # - docker run trialrepo yarn run lint
-     # - docker system prune --force
-   #   - docker build -t trialrepo .
-  #    - docker run trialrepo yarn run test
-  #    - docker tag trialrepo:latest 389683505237.dkr.ecr.us-east-1.amazonaws.com/trialrepo:latest
-   #   - docker push 389683505237.dkr.ecr.us-east-1.amazonaws.com/trialrepo:latest
 
- # post_build: 
-  #  commands:
+
+  post_build: 
+   commands:
       - ASG_NAME=$(aws autoscaling describe-auto-scaling-groups --query 'AutoScalingGroups[].[AutoScalingGroupName]' --output text)
       - aws autoscaling start-instance-refresh --auto-scaling-group-name $ASG_NAME 
