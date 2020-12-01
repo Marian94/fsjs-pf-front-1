@@ -92,7 +92,7 @@ export const Catalogo = ({admin}) =>{
                     <CustomDropdown 
                         id={"catalogoDropdown"} 
                         variant={"success"} 
-                        placeHolder={"Buscar..."} 
+                        placeHolder={"Search..."} 
                         items={listServices}
                         className={"justify-content-center"}
                         handleFunction={selectedOption}
@@ -111,7 +111,7 @@ export const Catalogo = ({admin}) =>{
                                     user={user} 
                                     overlay={overlay} 
                                     onClickHandler={handleShow} 
-                                    labelButton="Descripcion" 
+                                    labelButton="Description" 
                                     variant="success" 
                                     button={true} 
                                     descripcionPersona={item.description} 

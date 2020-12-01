@@ -136,37 +136,37 @@ export const FormSignUp = ({job}) => {
     const [list, setList] = useState([]);
     const [days, setDays] = useState([
         {
-            day: "Lunes",
+            day: "Monday",
             horarioI:"",
             horarioS:"",
             checked:false
         },
         {
-            day: "Martes",
+            day: "Tuesday",
             horarioI:"",
             horarioS:"",
             checked:false
         },
         {
-            day: "Miercoles",
+            day: "Wednesday",
             horarioI:"",
             horarioS:"",
             checked:false
         },
         {
-            day: "Jueves",
+            day: "Thursday",
             horarioI:"",
             horarioS:"",
             checked:false
         },
         {
-            day: "Viernes",
+            day: "Friday",
             horarioI:"",
             horarioS:"",
             checked:false
         },
         {
-            day: "Sabado",
+            day: "Saturday",
             horarioI:"",
             horarioS:"",
             checked:false
@@ -174,21 +174,17 @@ export const FormSignUp = ({job}) => {
     ]);
     const [pay, setPay] = useState([
         {
-            type:"Tarjeta",
+            type:"Credit card",
             checked: false
         },
         {
-            type:"Efectivo",
-            checked: false
-        },
-        {
-            type:"Facturacion",
+            type:"Effective",
             checked: false
         }
     ]);
     const [special, setSpecial] = useState([
         {
-            type:"Domingo",
+            type:"Sunday",
             checked: false
         },
         {
@@ -196,7 +192,7 @@ export const FormSignUp = ({job}) => {
             checked: false
         },
         {
-            type:"Servicio a Domicilio",
+            type:"Home service ",
             checked: false
         }
     ]);
@@ -216,18 +212,18 @@ export const FormSignUp = ({job}) => {
         <div className="grid-item-header">
             <Form onSubmit={formik.handleSubmit} style={{textAlign:"left"}}>
                 <Form.Group>
-                    <Form.Label>Nombre y Apellido</Form.Label>
+                    <Form.Label>First and Last Name</Form.Label>
                     <>
                     <div className="input-group">
                         <div className="input-group-prepend">
-                            <span className="input-group-text">Nombre completo</span>
+                            <span className="input-group-text">Name</span>
                         </div>
                         <input
                             id="firstName"
                             name="firstName"
                             type="text"
                             className="form-control"
-                            placeholder="Nombre"
+                            placeholder="First Name"
                             onChange={formik.handleChange}
                             value={formik.values.firstName}
                         />
@@ -236,7 +232,7 @@ export const FormSignUp = ({job}) => {
                             name="lastName"
                             type="text"
                             className="form-control"
-                            placeholder="Apellido"
+                            placeholder="Last name"
                             onChange={formik.handleChange}
                             value={formik.values.lastName}
                         />
@@ -258,14 +254,14 @@ export const FormSignUp = ({job}) => {
                         </>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Telefono(s)</Form.Label>
+                    <Form.Label>Phone(s)</Form.Label>
                     <div className="input-group mb-3">
                         <input
                             className="form-control"
                             id="celular"
                             name="celular"
                             type="text"
-                            placeholder="Celular"
+                            placeholder="Celphone"
                             onChange={formik.handleChange}
                             value={formik.values.celular}
                         />
@@ -281,7 +277,7 @@ export const FormSignUp = ({job}) => {
                             id="telefono"
                             name="telefono"
                             type="text"
-                            placeholder="Telefono de casa"
+                            placeholder="Other phone"
                             onChange={formik.handleChange}
                             value={formik.values.telefono}
                         />
@@ -349,14 +345,14 @@ export const FormSignUp = ({job}) => {
                     </div>
                 </Form.Group> */}
                 <Form.Group>
-                    <Form.Label>Calle</Form.Label>
+                    <Form.Label>Street</Form.Label>
                     <div className="input-group mb-3">
                         <input
                             className="form-control"
                             id="address1"
                             name="address1"
                             type="text"
-                            placeholder="Santa Laura 123"
+                            placeholder="Street and number"
                             onChange={formik.handleChange}
                             value={formik.values.address1}
                         />
@@ -371,13 +367,13 @@ export const FormSignUp = ({job}) => {
                     <>
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label htmlFor="colonia">Colonia</label>
+                            <label htmlFor="colonia">Suburb</label>
                             <input
                             className="form-control"
                             id="colonia"
                             name="colonia"
                             type="text"
-                            placeholder="Ciudad de los niños"
+                            placeholder="Suburb"
                             onChange={formik.handleChange}
                             value={formik.values.colonia}
                             />
@@ -390,7 +386,7 @@ export const FormSignUp = ({job}) => {
                                 onChange={formik.handleChange}
                                 style={{ display: 'block', width:'100%', fontSize: "1.5rem"}}
                             >
-                                <option value="" disabled>Buscar...</option>
+                                <option value="" disabled>Search...</option>
                                 <option value="Guadalajara">Guadalajara</option>
                                 <option value="Tonala">Tonala</option>
                                 <option value="Tlajomulco">Tlajomulco</option>
@@ -439,7 +435,7 @@ export const FormSignUp = ({job}) => {
                 {job === true && (
                     <>
                     <Form.Group>
-                        <Form.Label>Oficios</Form.Label>
+                        <Form.Label>Jobs</Form.Label>
                         {list.map(item => (
                             <Checkbox
                                 name="checkboxGroup"
@@ -458,7 +454,7 @@ export const FormSignUp = ({job}) => {
                     </Form.Group>
                     <hr/>
                     <Form.Group>
-                        <Form.Label>Horario de trabajo</Form.Label>
+                        <Form.Label>Schedule</Form.Label>
                         {days.map((dia, idx) => (
                             <div className="input-group">
                                 <div className="form-group col-md-4">
@@ -521,7 +517,7 @@ export const FormSignUp = ({job}) => {
                     <Form.Group>
                         <div className="form-row">
                             <div className="form-group col-md-5">
-                                <label>Método de pago</label>  
+                                <label>Payment</label>  
                                 {pay.map((method, idx) => (
                                     <div className="input-group">
                                         <Form.Check
@@ -540,7 +536,7 @@ export const FormSignUp = ({job}) => {
                                 ))}
                             </div>
                             <div className="form-group col-md-5">
-                                <label htmlFor="postalCode">Especiales</label>
+                                <label htmlFor="postalCode">Special Services</label>
                                 {special.map((method, idx) => (
                                     <div className="input-group">
                                         <Form.Check
@@ -564,7 +560,7 @@ export const FormSignUp = ({job}) => {
                     <Form.Group>
                         <div className="input-group">
                             <div className="input-group-prepend">
-                                <span className="input-group-text">Descripcion del servicio</span>
+                                <span className="input-group-text">Review</span>
                             </div>
                             <textarea
                                 id="description" 
@@ -622,15 +618,15 @@ export const FormSignUp = ({job}) => {
                             </p>
                             <hr/>
                             <div className="d-flex justify-content-end">
-                                <Link to="/login">
-                                    <CustomButton variant="outline-success" label="Continuar"/>
+                                <Link to="/">
+                                    <CustomButton variant="outline-success" label="Success!"/>
                                 </Link>
                             </div>
                         </Alert>
                     </Form.Group>
                 )}
                 {success === "" &&(
-                    <CustomButton type="submit" label="Enviar" variant="success" className="btn-lg"/>
+                    <CustomButton type="submit" label="Send" variant="success" className="btn-lg"/>
                 )}
             </Form>
         </div>

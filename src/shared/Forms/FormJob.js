@@ -13,7 +13,7 @@ export const FormJob = () => {
     },
     validationSchema: Yup.object({
         serviceDelete: Yup.string()
-            .required('Elige un servicio a eliminar') 
+            .required('Choose a service to delete') 
     }),
     onSubmit: values => {
         const filterList =list.filter(x => values.serviceDelete.indexOf(x) === -1);
@@ -79,16 +79,16 @@ export const FormJob = () => {
                 <Form onSubmit={formik.handleSubmit} style={{textAlign:"left"}}>
                         <Form.Group>
                             <Form.Label>
-                                Servicios <br/>
+                                Jobs <br/>
                                 <input
                                     id="addService"
                                     type="text"
                                     className="form-control"
-                                    placeholder="Agregar Servicio"
+                                    placeholder="Add a Job"
                                     onChange={handleChangeService}
                                     value={service}
                                 />
-                                <CustomButton onClickHandler={addList} variant="info"  label="Agregar Servicio" />
+                                <CustomButton onClickHandler={addList} variant="info"  label="Add a Job" />
                             </Form.Label>
                                 {list.map(item => (
                                     <Checkbox
@@ -106,8 +106,8 @@ export const FormJob = () => {
                             </Alert>
                             ) : null}
                         </Form.Group>
-                    <CustomButton onClickHandler={saveList} variant="success" className="btn-lg" label="Guardar" />
-                    <CustomButton type="submit" label="Eliminar" variant="danger" className="btn-lg"/>
+                    <CustomButton onClickHandler={saveList} variant="success" className="btn-lg" label="Save" />
+                    <CustomButton type="submit" label="Delete" variant="danger" className="btn-lg"/>
                 </Form>
             </div>
         </div>
