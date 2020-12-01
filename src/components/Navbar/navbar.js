@@ -16,7 +16,7 @@ export const CustomNavbar = () =>{
     // const {user, setUser} = useContext(UserContext);
     
     return(
-        <Navbar collapseOnSelect expand="lg" sticky="top" style={{background: "#FFFAFA"}}>
+        <Navbar collapseOnSelect expand="lg" sticky="top" style={{background: "white"}}>
             <Navbar.Brand>
                 <Img alt="App Tool" src={Tools} width="50" height="50" className="d-inline-block align-top"/>
                 {/* {' '}
@@ -30,13 +30,13 @@ export const CustomNavbar = () =>{
                 <Nav>
                     <Nav.Link>
                         <Link to="/"> 
-                                Inicio <br/>
+                                 <br/>
                                 <Img alt="Home" src={Home} width="30" height="30" className="d-inline-block align-top"/>
                         </Link>
                     </Nav.Link>
                     <Nav.Link>
                         <Link to="/catalogo">
-                            Catalogo <br/>
+                             <br/>
                             <Img alt="Search" src={Search} width="30" height="39" className="d-inline-block align-top"/>
                         </Link>
                     </Nav.Link>
@@ -46,7 +46,7 @@ export const CustomNavbar = () =>{
                             {/* {user.admin === true && ( */}
                                 <Nav.Link>
                                     <Link to="/administration">
-                                        Admin <br/>
+                                         <br/>
                                         <Img alt="Admin" src={Admin} width="30" height="40" className="d-inline-block align-top"/>
                                     </Link>
                                 </Nav.Link>

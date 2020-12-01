@@ -33,7 +33,7 @@ export default function App(){
                     <Route component={Error}></Route>
                 </Switch>
             </UserContext.Provider>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     );
 }
