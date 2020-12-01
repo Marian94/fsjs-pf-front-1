@@ -13,17 +13,17 @@ import Admin from "../../assets/img/admin.png";
 import { UserContext } from "../../context/userContext";
 
 export const CustomNavbar = () =>{
-    const {user, setUser} = useContext(UserContext);
+    // const {user, setUser} = useContext(UserContext);
     
     return(
         <Navbar collapseOnSelect expand="lg" sticky="top" style={{background: "#FFFAFA"}}>
             <Navbar.Brand>
                 <Img alt="App Tool" src={Tools} width="50" height="50" className="d-inline-block align-top"/>
-                {' '}
+                {/* {' '}
                 {user ?
                     
                     (<b>App Tool Bienvenid@ {user.firstName}</b>):(<b>AppTool</b>)
-                }
+                } */}
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
@@ -40,40 +40,40 @@ export const CustomNavbar = () =>{
                             <Img alt="Search" src={Search} width="30" height="39" className="d-inline-block align-top"/>
                         </Link>
                     </Nav.Link>
-                    {user ?
-                        (
+                    {/* {user ?
+                        ( */}
                             <>
-                            {user.admin === true && (
+                            {/* {user.admin === true && ( */}
                                 <Nav.Link>
                                     <Link to="/administration">
                                         Admin <br/>
                                         <Img alt="Admin" src={Admin} width="30" height="40" className="d-inline-block align-top"/>
                                     </Link>
                                 </Nav.Link>
-                            )}
-                                <Nav.Link>
+                            {/* )} */}
+                                {/* <Nav.Link>
                                     <Link to="/profile">
                                         Profile <br/>
                                         <Img alt="Account" src={Profile} width="30" height="40" className="d-inline-block align-top"/>
                                     </Link>
-                                </Nav.Link>
-                                <Nav.Link onClick={() => setUser(null)}>
+                                </Nav.Link> */}
+                                {/* <Nav.Link onClick={() => setUser(null)}>
                                     <Link to="/">
                                         Log Out <br/>
                                         <Img alt="Log Out" src={LogOut} width="30" height="30" className="d-inline-block align-top"/>
                                     </Link>
-                                </Nav.Link>
+                                </Nav.Link> */}
                             </>
-                        ):
-                        ( 
-                            <Nav.Link>
+                        {/* ):
+                        (  */}
+                            {/* <Nav.Link>
                                 <Link to="/login">
                                     Log In<br/>
                                     <Img alt="Log In" src={LogIn} width="30" height="30" className="d-inline-block align-top"/>
                                 </Link>
-                            </Nav.Link>
-                        )
-                    }
+                            </Nav.Link> */}
+                        {/* )
+                    } */}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

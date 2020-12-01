@@ -68,11 +68,11 @@ export const CustomCard = ({
                         </>
                     )}
                     
-                    {(button && user) ? (
+                    {/* {(button && user) ? ( */}
                         <CustomButton disabled={disabled} onClickHandler={onClickHandler} variant={variant} label={labelButton} domicilio/>
-                    ): catalogo &&(
-                        <p className="custom-p-small"> Es necesario estar logueado para contactar a la persona</p>
-                    )}
+                    {/* // ): catalogo &&(
+                    //     <p className="custom-p-small"> Es necesario estar logueado para contactar a la persona</p>
+                    // )} */}
                 </Card.Body>
             </Card>
             {useOverlay && (
@@ -132,7 +132,7 @@ export const CustomCard = ({
                     </Modal.Body>
                     <Modal.Footer>
                         <CustomButton variant="secondary" label="Close"  onClickHandler={onClickHandler}/>
-                        <CustomButton variant="primary" label="Contactar" onClickHandler={onClickHandler} disabled={true}/>
+                        {/* <CustomButton variant="primary" label="Contactar" onClickHandler={onClickHandler} disabled={true}/> */}
                     </Modal.Footer>
                 </Modal>
             )}

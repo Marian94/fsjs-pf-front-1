@@ -14,15 +14,15 @@ export const FormSignUp = ({job}) => {
     const initialValues = {
         firstName: '',
         lastName: '',
-        email: '',
+        // email: '',
         celular: '',
         telefono: '',
-        password: '',
-        changepassword: '',
+        // password: '',
+        // changepassword: '',
         address1: '',
         colonia: '',
         municipio: '',
-        postalCode: '',
+        // postalCode: '',
         file: undefined,
     };
     const validationSchema =  Yup.object({
@@ -34,9 +34,9 @@ export const FormSignUp = ({job}) => {
             .min(2, 'Last Name must be more than 2 characters')
             .max(20, 'Last Name must be 20 characters or less')
             .required('Last Name is required'),
-        email: Yup.string()
-            .email('Invalid email address')
-            .required('Email is required'),
+        // email: Yup.string()
+        //     .email('Invalid email address')
+        //     .required('Email is required'),
         celular: Yup.string()
             .required('Celular is required')
             .matches(/^[0-9]+$/, 'Must be only digits')
@@ -56,26 +56,26 @@ export const FormSignUp = ({job}) => {
             .required('Colonia is required'),  
         municipio: Yup.string()
             .required('Municipio is required!'),
-        postalCode: Yup.string()
-            .required('CP is required')
-            .matches(/^[0-9]+$/, 'Must be only digits')
-            .min(5, 'Must be exactly 5 digits')
-            .max(5, 'Must be exactly 5 digits'),
-        password: Yup.string()
-            .required('Ingrese una contraseña')
-            .matches(
-                /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                'Debe de tene minimo 8 caracters y un numero'
-            ),
-        changepassword: Yup.string()
-            .required('Confirme la contraseña')
-            .when('password', {
-                is: val => (val && val.length > 0 ? true : false),
-                then: Yup.string().oneOf(
-                [Yup.ref('password')],
-                'Las contraseñas deben de ser iguales'
-                )
-            }),
+        // postalCode: Yup.string()
+        //     .required('CP is required')
+        //     .matches(/^[0-9]+$/, 'Must be only digits')
+        //     .min(5, 'Must be exactly 5 digits')
+        //     .max(5, 'Must be exactly 5 digits'),
+        // password: Yup.string()
+        //     .required('Ingrese una contraseña')
+        //     .matches(
+        //         /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+        //         'Debe de tene minimo 8 caracters y un numero'
+        //     ),
+        // changepassword: Yup.string()
+        //     .required('Confirme la contraseña')
+        //     .when('password', {
+        //         is: val => (val && val.length > 0 ? true : false),
+        //         then: Yup.string().oneOf(
+        //         [Yup.ref('password')],
+        //         'Las contraseñas deben de ser iguales'
+        //         )
+        //     }),
         file: Yup.mixed()
             .required("A file is required")
             .test(
@@ -292,7 +292,7 @@ export const FormSignUp = ({job}) => {
                         </Alert>
                     ) : null}
                 </Form.Group>
-                <Form.Group>
+                {/* <Form.Group>
                     <Form.Label>Correo</Form.Label>
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
@@ -347,7 +347,7 @@ export const FormSignUp = ({job}) => {
                                 </Alert>
                         ) : null}
                     </div>
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Group>
                     <Form.Label>Calle</Form.Label>
                     <div className="input-group mb-3">
@@ -398,7 +398,7 @@ export const FormSignUp = ({job}) => {
                                 <option value="Zapopan">Zapopan</option>
                             </select>
                         </div>
-                        <div className="form-group col-md-2">
+                        {/* <div className="form-group col-md-2">
                             <label htmlFor="postalCode">C.P</label>
                             <input
                                 className="form-control"
@@ -409,7 +409,7 @@ export const FormSignUp = ({job}) => {
                                 onChange={formik.handleChange}
                                 value={formik.values.postalCode}
                             />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
@@ -426,13 +426,13 @@ export const FormSignUp = ({job}) => {
                                 </Alert>
                             ) : null}
                         </div>
-                        <div className="form-group col-md-2">
+                        {/* <div className="form-group col-md-2">
                             {formik.touched.postalCode && formik.errors.postalCode ? (
                                 <Alert variant='danger'>
                                     <p style={{fontSize: "1rem", color:"#721c24"}}>{formik.errors.postalCode}</p>
                                 </Alert>
                             ) : null}
-                        </div>
+                        </div> */}
                      </div>
                     </>
                 </Form.Group>
