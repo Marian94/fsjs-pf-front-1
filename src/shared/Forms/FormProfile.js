@@ -203,7 +203,7 @@ export const FormProfile = () => {
                                 onChange={formik.handleChange}
                                 style={{ display: 'block', width:'100%', fontSize: "1.5rem"}}
                             >
-                                <option value="" disabled>Buscar...</option>
+                                <option value="" disabled>Search...</option>
                                 <option value="Guadalajara">Guadalajara</option>
                                 <option value="Tonala">Tonala</option>
                                 <option value="Tlajomulco">Tlajomulco</option>

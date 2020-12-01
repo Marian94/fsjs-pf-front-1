@@ -50,7 +50,7 @@ export const CustomCard = ({
                         </Card.Text>
                         <hr/>
                         <Card.Text>
-                            Horario
+                            Schedule
                             {horario.map(item => (
                                 <>
                                 {item.checked ? (
@@ -81,9 +81,9 @@ export const CustomCard = ({
                     <Modal.Title>{nombrePersona}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p className="custom-p">Telefono:</p>
+                        <p className="custom-p">Phone:</p>
                         {telefono}
-                        <p className="custom-p">Horario:</p>
+                        <p className="custom-p">Schedule:</p>
                         {horario.map(item => (
                             <>
                             {item.checked ? (
@@ -96,9 +96,9 @@ export const CustomCard = ({
                             )}
                             </>
                         ))}
-                        <p className="custom-p">Domicilio:</p>
+                        <p className="custom-p">Address:</p>
                         {domicilio}
-                        <p className="custom-p">Metodos de pago:</p>
+                        <p className="custom-p">Payment method:</p>
                         {pago.map(item => (
                             <>
                             {item.checked ? (
@@ -110,13 +110,13 @@ export const CustomCard = ({
                             )}
                             </>
                         ))}
-                        <p className="custom-p">Otros servicios:</p>
+                        <p className="custom-p">Jobs:</p>
                         {servicios.map(item => (
                             <>
                                 <p>{item}</p>
                             </>
                         ))}
-                        <p className="custom-p">Servicios especiales:</p>
+                        <p className="custom-p">Special services:</p>
                         {otrosServicios.map(item => (
                             <>
                              {item.checked ? (
@@ -128,6 +128,7 @@ export const CustomCard = ({
                             )}
                             </>
                         ))}
+                        <p className="custom-p">Review:</p>
                         <p>{descripcionPersona}</p>
                     </Modal.Body>
                     <Modal.Footer>
